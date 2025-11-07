@@ -1,4 +1,4 @@
-name = "omori-remake"
+name = "omocat-remake"
 compatibility_date = "2025-09-02"
 compatibility_flags = ["nodejs_compat"]
 main = "@tanstack/react-start/server-entry"
