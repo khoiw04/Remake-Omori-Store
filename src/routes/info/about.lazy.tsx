@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute('/info/about')({
 
 function About() {
   return (
-    <main className='w-full h-fit | flex flex-col | justify-center items-center | text-center | py-24'>
+    <main className='w-full h-fit min-custom-screen | flex flex-col | justify-center items-center | text-center | py-24'>
       <section id='name' className='flex flex-row | items-center | w-full max-w-96 | opacity-90'>
         <div className='flex flex-col | justify-start | text-start w-full | text-slate-800 dark:text-slate-200'>
           <h2 className='text-[calc(20px+1vmin)] font-bold'>@Khoi</h2>
