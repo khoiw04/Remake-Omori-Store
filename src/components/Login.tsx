@@ -92,6 +92,12 @@ export function LogInField() {
 
 
   const [captchaToken, setCaptchaToken] = useState<string | undefined>(undefined)
+  const [isCaptchaLoading, setCaptchaLoading] = useState(true)
+
+  useEffect(() => {
+    console.log(isCaptchaLoading)
+  }, [isCaptchaLoading])
+
   const LoginSchema = object({
     email: pipe(
       string(),
@@ -143,15 +149,15 @@ export function LogInField() {
       <motion.div
         animate={{ opacity: !click.forget && !click.forgetSubmit ? 1 : 0 }}
         style={{ pointerEvents: !click.forget && !click.forgetSubmit ? 'auto' : 'none' }}
-        className='flex | justify-center | w-full | mt-1.5 p-4 gap-4 | use font round | absolute'>
+        className='flex flex-col | justify-center items-center | w-full | mt-1.5 p-4 gap-4 | use font round | absolute'>
         <form 
-        method='POST'
-        acceptCharset='UTF-8'
-        className='flex flex-col | w-full max-w-54 | gap-2 | text-center text-slate-800 dark:text-slate-200'
-        onSubmit={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-        }}
+          method='POST'
+          acceptCharset='UTF-8'
+          className='flex flex-col | w-full max-w-54 | gap-2 | text-center text-slate-800 dark:text-slate-200'
+          onSubmit={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+          }}
         >
         <login.Field
             name='email'
@@ -210,9 +216,9 @@ export function LogInField() {
             <input
                 type='submit'
                 onClick={login.handleSubmit}
-                disabled={!canSubmit || isValidating}
-                value={!canSubmit || isValidating ? 'SIGNING IN...' : 'SIGN IN'}
-                className={`py-2 mt-2 | cursor-pointer rounded-md | text-slate-100 tracking-wide font-medium transition-colors duration-75 ${!canSubmit ? 'bg-slate-400 dark:bg-neutral-400 text-slate-800' : 'bg-slate-950 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-950 dark:hover:text-white/85 dark:active:text-white/60'}`}
+                disabled={!canSubmit || isValidating || isCaptchaLoading}
+                value={isCaptchaLoading ? 'Catpcha Loading...' : !canSubmit || isValidating ? 'SIGNING IN...' : 'SIGN IN'}
+                className={`py-2 mt-2 | cursor-pointer rounded-md | text-slate-100 tracking-wide font-medium transition-colors duration-75 ${!canSubmit  || isCaptchaLoading ? 'bg-slate-400 dark:bg-neutral-400 text-slate-800' : 'bg-slate-950 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-950 dark:hover:text-white/85 dark:active:text-white/60'}`}
             />
             )}
         />
@@ -220,15 +226,6 @@ export function LogInField() {
               {mutate.error.name} + {mutate.error.message}
           </p>
         }
-        <Turnstile
-          tabIndex={-1}
-          action='login'
-          sitekey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY_REGISTER as string}
-          onVerify={(token) => {
-              setCaptchaToken(token)
-          }}
-          className='hidden'
-        />
         <Link
           to='/account/register'
           onClick={() =>
@@ -252,6 +249,16 @@ export function LogInField() {
             Forgot your password?
         </button>
         </form>
+        <Turnstile
+          tabIndex={-1}
+          action='login'
+          sitekey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY_REGISTER as string}
+          onVerify={(token) => {
+              setCaptchaToken(token)
+          }}
+          onSuccess={() => setCaptchaLoading(false)}
+          className='hidden'
+        />
     </motion.div>
   )
 }
@@ -259,6 +266,7 @@ export function LogInField() {
 export function ForgetField() {
   const { click, setClick } = useZustandStore()
 
+  const [isCaptchaLoading, setCaptchaLoading] = useState(true)
   const [captchaToken2, setCaptchaToken2] = useState<string | undefined>(undefined)
 
   const ForgetSchema = object({
@@ -341,6 +349,7 @@ export function ForgetField() {
             onVerify={(token) => {
               setCaptchaToken2(token)
             }}
+            onSuccess={() => setCaptchaLoading(false)}
             className='hidden'
           />
           <forget.Subscribe
@@ -349,9 +358,9 @@ export function ForgetField() {
               <input
                 type='submit'
                 onClick={forget.handleSubmit}
-                disabled={!canSubmit || isValidating}
-                value={`${!canSubmit ? 'SUBMITTING...' : 'SUBMIT'}`}
-                className={`py-2 mt-4 | opacity-85 | cursor-pointer rounded-md | text-slate-100 tracking-wide font-medium ${!canSubmit ? 'bg-slate-400 dark:bg-neutral-400 text-slate-800' : 'bg-slate-950 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-950 dark:hover:text-white/85 dark:active:text-white/60'}`}
+                disabled={!canSubmit || isValidating || isCaptchaLoading}
+                value={isCaptchaLoading ? 'Catpcha Loading...' : !canSubmit || isValidating ? 'SIGNING IN...' : 'SIGN IN'}
+                className={`py-2 mt-2 | cursor-pointer rounded-md | text-slate-100 tracking-wide font-medium transition-colors duration-75 ${!canSubmit  || isCaptchaLoading ? 'bg-slate-400 dark:bg-neutral-400 text-slate-800' : 'bg-slate-950 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-950 dark:hover:text-white/85 dark:active:text-white/60'}`}
               />
             )}
           />
