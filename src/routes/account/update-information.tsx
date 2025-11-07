@@ -88,7 +88,7 @@ function Update() {
       mutationKey: ['update_information', email],
       mutationFn: async (s: Information) => {
         await Promise.all([
-          await fetch('https://omocat-stripe.khoi-w04.workers.dev/update-account', {
+          await fetch('https://api-billowing-wildflower-2154.fly.dev/update-account', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

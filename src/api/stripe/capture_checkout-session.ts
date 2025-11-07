@@ -15,7 +15,13 @@ export async function captureCheckout(request: Request): Promise<Response> {
         );
     } catch (err) {
         console.log(`Webhook signature verification failed.`, err);
-        return new Response('Error', { status: 400 });
+        return new Response('Error', { 
+            status: 400,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
     }
 
     switch (event?.type) {
@@ -30,5 +36,11 @@ export async function captureCheckout(request: Request): Promise<Response> {
             console.log(`Unhandled event type ${event?.type}`);
     }
 
-    return new Response('Webhook received', { status: 200 });
+    return new Response('Webhook received', {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+    });
 }

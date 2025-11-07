@@ -50,12 +50,24 @@ export async function createFullRefundOrder(request: Request): Promise<Response>
     return new Response(JSON.stringify({ 
       success: true,
       refund 
-    }))
+    }), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+    })
   } catch (error: any) {
     console.error("Error refunding:", error)
     return new Response(JSON.stringify({ 
       error: error.message || "Have an error when creating a refund" 
-    }), { status: 500 })
+    }), { 
+      status: 500,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   }
 }
 
@@ -98,12 +110,24 @@ export async function processPartialRefund(request: Request): Promise<Response> 
     return new Response(JSON.stringify({ 
       success: true, 
       refund 
-    }))
+    }), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+    })
   } catch (error: any) {
     console.error("Erorr checking a part of refund", error)
     return new Response(JSON.stringify({ 
       error: error.message || "Meet an error when checking a part of refund" 
-    }), { status: 500 })
+    }), { 
+      status: 500,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   }
 }
 
@@ -124,12 +148,24 @@ export async function checkRefundStatus(request: Request): Promise<Response> {
       status: refund.status,
       pending_reason: refund.pending_reason,
       refund 
-    }))
+    }), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+    })
   } catch (error: any) {
     console.error("Error checking refund:", error)
     return new Response(JSON.stringify({ 
       error: error.message || "Meet an error when checking refund" 
-    }), { status: 500 })
+    }), { 
+      status: 500,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   }
 }
 
@@ -153,12 +189,24 @@ export async function updateRefundMetadata(request: Request): Promise<Response> 
     return new Response(JSON.stringify({ 
       success: true, 
       refund 
-    }))
+    }), {
+      status: 200,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   } catch (error: any) {
     console.error("Error updating refund:", error)
     return new Response(JSON.stringify({ 
       error: error.message || "Meet an error when updating refund" 
-    }), { status: 500 })
+    }), { 
+      status: 500,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   }
 }
 
@@ -179,11 +227,23 @@ export async function cancelRefund(request: Request): Promise<Response> {
     return new Response(JSON.stringify({ 
       success: true,
       refund
-    }))
+    }), {
+      status: 200,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   } catch (error: any) {
     console.error("Error canceling refund:", error)
     return new Response(JSON.stringify({ 
       error: error.message || "Meet an error when canceling refund" 
-    }), { status: 500 })
+    }), { 
+      status: 500,
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    })
   }
 }

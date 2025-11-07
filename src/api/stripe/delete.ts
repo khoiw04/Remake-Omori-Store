@@ -13,16 +13,30 @@ export async function deleteAccount(request: Request): Promise<Response> {
         });
         if (targetCustomer.data.length > 0) {
             const deleted = await stripe.customers.del(targetCustomer.data[0].id)
-            return new Response(JSON.stringify({ deleted }))
+            return new Response(JSON.stringify({ deleted }),{
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+            })
         } else {
             return new Response(JSON.stringify({ error: "We can't found the user in Stripe's system" }), {
                 status: 404,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
             })
         }
     } catch (err) {
             console.error(err)
             return new Response(JSON.stringify({ error: "An error occurred when calling the Stripe API to create an account" }), {
-            status: 500
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
         })
     }
 }

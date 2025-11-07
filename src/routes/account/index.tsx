@@ -184,7 +184,7 @@ function Article({ ref }: { ref: React.RefObject<HTMLAnchorElement | null> }) {
     const { data: ordersList, isSuccess, mutateAsync } = useMutation<Array<Orders>>({
       mutationKey: ['ordered', email],
       mutationFn: async () => {
-          const response = await fetch('https://omocat-stripe.khoi-w04.workers.dev/get-information', {
+          const response = await fetch('https://api-billowing-wildflower-2154.fly.dev/get-information', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -547,7 +547,7 @@ function DropMenu({ button, ordersList, refundedInfo } : Drop) {
     {
       mutationKey: ['create_refund'],
       mutationFn: async (data: Refund__Items) => {
-        await fetch('https://omocat-stripe.khoi-w04.workers.dev/refund-full-order', {
+        await fetch('https://api-billowing-wildflower-2154.fly.dev/refund-full-order', {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
@@ -564,7 +564,7 @@ function DropMenu({ button, ordersList, refundedInfo } : Drop) {
     {
       mutationKey: ['cancel_refund'],
       mutationFn: async () => {
-          await fetch('https://omocat-stripe.khoi-w04.workers.dev/refund-canceling', {
+          await fetch('https://api-billowing-wildflower-2154.fly.dev/refund-canceling', {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',

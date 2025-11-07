@@ -121,8 +121,8 @@ export async function createCheckoutSession(request: Request): Promise<Response>
         payment_method_data: {
           allow_redisplay: 'limited'
         },
-        success_url: process.env.PROD ? 'https://store-zero.khoiwn04.com/payment/successful' : 'http://localhost:3000/payment/successful',
-        cancel_url: process.env.PROD ? 'https://store-zero.khoiwn04.com' : 'http://localhost:3000/',
+        success_url: 'https://store-zero.khoiwn04.com/payment/successful' : 'http://localhost:3000/payment/successful',
+        cancel_url: 'https://store-zero.khoiwn04.com' : 'http://localhost:3000/',
         locale: "auto",
         after_expiration: {
           recovery: {
@@ -239,8 +239,8 @@ export async function createCheckoutSession(request: Request): Promise<Response>
           }
         })),
         mode: 'payment',
-        success_url: process.env.PROD ? 'https://store-zero.khoiwn04.com/payment/successful' : 'http://localhost:3000/payment/successful',
-        cancel_url: process.env.PROD ? 'https://store-zero.khoiwn04.com' : 'http://localhost:3000/',
+        success_url: 'https://omocat-remake.khoiwn04.com/payment/successful',
+        cancel_url: 'https://omocat-remake.khoiwn04.com',
         customer: targetCustomer.data[0].id,
         customer_update: {
           address: "auto",
@@ -293,6 +293,12 @@ export async function createCheckoutSession(request: Request): Promise<Response>
         await stripe.paymentIntents.capture(paymentIntent.id);
       }
   
-      return new Response(JSON.stringify({ sessionId: session.id }))
+      return new Response(JSON.stringify({ sessionId: session.id }), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        },
+      })
     }
   }

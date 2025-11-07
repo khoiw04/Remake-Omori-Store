@@ -98,11 +98,21 @@ export async function getInformation(request: Request): Promise<Response> {
 
         return new Response(JSON.stringify({ 
             orders: orderDetails.filter(Boolean)
-        }))
+        }), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        })
     } catch (err) {
             console.error(err)
-            return new Response(JSON.stringify({ error: "An error occurred when calling the Stripe API to get all orders" }), {
-            status: 500
-        })
+            return new Response(JSON.stringify({ error: "An error occurred when calling the Stripe API to get all orders" }), { 
+                status: 500,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+            })
     }
 }

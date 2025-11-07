@@ -45,7 +45,13 @@ export async function updateInformation(request: Request): Promise<Response> {
                 },
             })
     
-            return new Response(JSON.stringify({ account: account.id }))
+            return new Response(JSON.stringify({ account: account.id }), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                },
+            })
         } catch (err) {
                 console.error(err)
                 return new Response(JSON.stringify({ error: "An error occurred when calling the Stripe API to create an account" }), {
