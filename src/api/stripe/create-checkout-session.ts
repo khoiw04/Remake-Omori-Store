@@ -121,8 +121,8 @@ export async function createCheckoutSession(request: Request): Promise<Response>
         payment_method_data: {
           allow_redisplay: 'limited'
         },
-        success_url: 'https://store-zero.khoiwn04.com/payment/successful' : 'http://localhost:3000/payment/successful',
-        cancel_url: 'https://store-zero.khoiwn04.com' : 'http://localhost:3000/',
+        success_url: 'https://omocat-remake.khoiwn04.com/payment/successful',
+        cancel_url: 'https://omocat-remake.khoiwn04.com',
         locale: "auto",
         after_expiration: {
           recovery: {
