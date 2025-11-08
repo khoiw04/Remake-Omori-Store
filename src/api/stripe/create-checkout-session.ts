@@ -296,8 +296,7 @@ export async function createCheckoutSession(request: Request): Promise<Response>
       return new Response(JSON.stringify({ sessionId: session.id }), {
         status: 200,
         headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
         },
       })
     }

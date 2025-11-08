@@ -21,7 +21,6 @@ export async function createAccount(request: Request): Promise<Response> {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
             },
         })
     } catch (err) {

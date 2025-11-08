@@ -17,7 +17,6 @@ export async function deleteAccount(request: Request): Promise<Response> {
                 status: 200,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
                 },
             })
         } else {
@@ -25,7 +24,6 @@ export async function deleteAccount(request: Request): Promise<Response> {
                 status: 404,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
                 },
             })
         }
@@ -35,7 +33,6 @@ export async function deleteAccount(request: Request): Promise<Response> {
             status: 500,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
             },
         })
     }

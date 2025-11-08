@@ -19,7 +19,6 @@ export async function captureCheckout(request: Request): Promise<Response> {
             status: 400,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
             },
         });
     }
@@ -40,7 +39,6 @@ export async function captureCheckout(request: Request): Promise<Response> {
         status: 200,
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
         },
     });
 }

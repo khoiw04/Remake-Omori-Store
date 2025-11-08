@@ -102,7 +102,6 @@ export async function getInformation(request: Request): Promise<Response> {
             status: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
             },
         })
     } catch (err) {
@@ -111,7 +110,6 @@ export async function getInformation(request: Request): Promise<Response> {
                 status: 500,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
                 },
             })
     }

@@ -266,7 +266,7 @@ function Register() {
             )}
           />
           {registerMutation.isError && <p className='text-red-500 dark:text-red-400/80 text-sm mt-4'>
-                  {registerMutation.error.name} + {registerMutation.error.message}
+            {registerMutation.error.name}: {registerMutation.error.message}
           </p>}
         </form>
       </>

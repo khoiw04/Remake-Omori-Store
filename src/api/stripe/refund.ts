@@ -54,7 +54,6 @@ export async function createFullRefundOrder(request: Request): Promise<Response>
         status: 200,
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
         },
     })
   } catch (error: any) {
@@ -65,7 +64,6 @@ export async function createFullRefundOrder(request: Request): Promise<Response>
       status: 500,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   }
@@ -114,7 +112,6 @@ export async function processPartialRefund(request: Request): Promise<Response> 
         status: 200,
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
         },
     })
   } catch (error: any) {
@@ -125,7 +122,6 @@ export async function processPartialRefund(request: Request): Promise<Response> 
       status: 500,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   }
@@ -152,7 +148,6 @@ export async function checkRefundStatus(request: Request): Promise<Response> {
         status: 200,
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
         },
     })
   } catch (error: any) {
@@ -163,7 +158,6 @@ export async function checkRefundStatus(request: Request): Promise<Response> {
       status: 500,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   }
@@ -193,7 +187,6 @@ export async function updateRefundMetadata(request: Request): Promise<Response> 
       status: 200,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   } catch (error: any) {
@@ -204,7 +197,6 @@ export async function updateRefundMetadata(request: Request): Promise<Response> 
       status: 500,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   }
@@ -231,7 +223,6 @@ export async function cancelRefund(request: Request): Promise<Response> {
       status: 200,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   } catch (error: any) {
@@ -242,7 +233,6 @@ export async function cancelRefund(request: Request): Promise<Response> {
       status: 500,
       headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
       },
     })
   }
